@@ -9,6 +9,7 @@ COPY package*.json ./
 
 # Install any needed packages specified in package.json
 RUN npm install
+RUN npm install -g serve
 
 # Bundle app source inside Docker image
 COPY . /usr/src/app
