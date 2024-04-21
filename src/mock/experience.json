@@ -1,0 +1,12 @@
+{
+  "experience": {
+    "title": "Frontend Developer",
+    "company": "XYZ Company",
+    "date": "20XX - Present",
+    "responsibilities": [
+      "Developed responsive web applications using React.js",
+      "Collaborated with designers to implement user-friendly interfaces",
+      "Optimized website performance for improved user experience"
+    ]
+  }
+}
