@@ -14,7 +14,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 function App() {
     const name = "John Doe";
     const title = "Frontend Developer";
-
+    console.log("SUPABASE_URL", SUPABASE_URL);
+    console.log("SUPABASE_KEY", SUPABASE_KEY);
     const [skills, setSkills] = useState([]);
 
     useEffect(() => {
