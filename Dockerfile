@@ -11,7 +11,9 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source inside Docker image
-COPY . .
+# COPY . .
+COPY src /usr/src/app
+
 
 # Build the React app
 RUN npm run build
