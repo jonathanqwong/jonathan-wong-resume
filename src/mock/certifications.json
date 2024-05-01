@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "certification": "Certified Scrum Master",
+        "institution": "Scrum Alliance"
+    },
+    {
+        "id": 2,
+        "certification": "Certified Cloud Practitioner",
+        "institution": "Amazon Web Services"
+    }
+]

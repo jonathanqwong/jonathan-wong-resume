@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import EducationMock from '../mock/education.json';
+import CertificationsMock from '../mock/certifications.json';
 import Title from './Title';
 import './styles.scss';
-
 import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 
 const Education = (props) => {
     let educationObjs = props.education;
+    let certificationsObjs = props.certifications;
 
-    if (!educationObjs) {
+
+    if (!educationObjs || !certificationsObjs) {
         return <div>Loading...</div>;
     }
 
@@ -19,15 +21,22 @@ const Education = (props) => {
         }
     }
 
+     // Fallback method if getCertifications not loaded from supabase
+    const fallbackForCertificationsSupabaseUnsuccessful = () => {
+        if (certificationsObjs.length === 0) {
+            certificationsObjs = CertificationsMock;
+        }
+    }
+
     const preventDefault = (event) => {
         event.preventDefault();
     }
     
     fallbackForEducationSupabaseUnsuccessful();
+    fallbackForCertificationsSupabaseUnsuccessful();
 
     return (
         <React.Fragment>
-            
             <Title>Education</Title>
             <Table size="small">
                 <TableHead>
@@ -47,7 +56,26 @@ const Education = (props) => {
                     ))}
                 </TableBody>
             </Table>
+
+            <Title>Certifications</Title>
+            <Table size="small">
+                <TableHead>
+                    <TableRow className="table-row-header">
+                        <TableCell>Certification</TableCell>
+                        <TableCell>Institution</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {certificationsObjs.map((certificationObj) => (
+                        <TableRow key={certificationObj.id}>
+                            <TableCell>{certificationObj.certification}</TableCell>
+                            <TableCell>{certificationObj.institution}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
         </React.Fragment>
+        
     );
 };
 

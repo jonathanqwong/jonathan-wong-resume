@@ -7,7 +7,7 @@ import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import Header from './components/Header';
 import ContactInfo from './components/ContactInfo';
 import Education from './components/Education';
-import Experience from './components/Experience';
+import Experiences from './components/Experiences';
 import Skills from './components/Skills';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -35,10 +35,14 @@ function App() {
 
     const [skills, setSkills] = useState([]);
     const [education, setEducation] = useState([]);
+    const [experiences, setExperiences] = useState([]);
+    const [certifications, setCertifications] = useState([]);
 
     useEffect(() => {
         getSkills();
         getEducation();
+        getExperiences();
+        getCertifications();
     }, []);
       
     async function getSkills() {
@@ -51,12 +55,22 @@ function App() {
         setEducation(data);
     }
 
+    async function getExperiences() {
+        const { data } = await supabase.from("experiences").select();
+        setExperiences(data);
+    }
+
+    async function getCertifications() {
+        const { data } = await supabase.from("certifications").select();
+        setCertifications(data);
+    }
+
     // Define components in an object
     const components = {
         null: () => <Header name={name} title={title}/>,
         Contact: () => <ContactInfo/>,
-        Education: () => <Education education={education}/>,
-        Experience: () => <Experience/>,
+        Education: () => <Education education={education} certifications={certifications}/>,
+        Experiences: () => <Experiences experiences={experiences}/>,
         Skills: () => <Skills skills={skills}/>,
     };
 
@@ -71,7 +85,7 @@ function App() {
                         <Button component={Link} to="/" color="inherit">Home</Button>
                         <Button component={Link} to="/contact" color="inherit">Contact</Button>
                         <Button component={Link} to="/education" color="inherit">Education</Button>
-                        <Button component={Link} to="/experience" color="inherit">Experience</Button>
+                        <Button component={Link} to="/experiences" color="inherit">Experiences</Button>
                         <Button component={Link} to="/skills" color="inherit">Skills</Button>
                     </Toolbar>
                 </AppBar>

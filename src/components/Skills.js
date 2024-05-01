@@ -1,6 +1,7 @@
 import React from 'react';
 import SkillsMock from '../mock/skills.json';
 import Title from './Title';
+import './styles.scss';
 import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 
 const Skills = (props) => {

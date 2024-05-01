@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import contactInfoData from '../mock/contact.json';
 import Title from './Title';
+import {Box} from "@mui/material";
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
@@ -11,27 +12,65 @@ const ContactInfo = () => {
 
     useEffect(() => {
         setContactInfo(contactInfoData?.contactInfo);
-        // fetch('/data.json')
-        //     // .then(response => response.json())
-        //     .then(data => setContactInfo(contactInfoData))
-        //     .catch(error => console.error('Error fetching contact info:', error));
     }, []);
 
     if (!contactInfo) {
         return <div>Loading...</div>;
     }
 
+    console.log("contact info", contactInfo);
+
     return (
         <section className="contact-info">
             <Title>Contact Information</Title>
-            <ul>
-                <li>Email: {email}</li>
-                <li>Phone: {phone}</li>
-                <li>LinkedIn: {linkedin}</li>
-                <li>GitHub: {github}</li>
-            </ul>
+                <Box
+                    height={200}
+                    width={200}
+                    my={4}
+                    display="inline"                        
+                    alignItems="center"                        gap={4}
+                    p={2}
+                    sx={{ border: '2px solid grey' }}
+                >
+                    {contactInfo.email}
+                </Box>
+                <Box
+                    height={200}
+                    width={200}
+                    my={4}
+                    display="inline"                        
+                    alignItems="center"                        gap={4}
+                    p={2}
+                    sx={{ border: '2px solid grey' }}
+                >
+                    {contactInfo.phone}
+                </Box>
+                <Box
+                    height={200}
+                    width={200}
+                    my={4}
+                    display="inline"                        
+                    alignItems="center"                        gap={4}
+                    p={2}
+                    sx={{ border: '2px solid grey' }}
+                >
+                    {contactInfo.linkedin}
+                </Box>
+                <Box
+                    height={200}
+                    width={200}
+                    my={4}
+                    display="inline"                        
+                    alignItems="center"                        gap={4}
+                    p={2}
+                    sx={{ border: '2px solid grey' }}
+                >
+                    {contactInfo.github}
+                </Box>
         </section>
     );
 };
 
 export default ContactInfo;
+
+

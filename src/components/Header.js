@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container} from "@mui/material";
+import {Container, Avatar, Stack} from "@mui/material";
 import Title from './Title';
 
 const Header = ({ name, title }) => {
@@ -9,6 +9,9 @@ const Header = ({ name, title }) => {
                 <Title>{name}</Title>
                 <p>{title}</p>
             </header>
+            <Stack direction="row" spacing={2}>
+                <Avatar alt="Jonathan Wong" src="../static/images/selfie.jpeg" />
+            </Stack>
         </Container>
 
     );
