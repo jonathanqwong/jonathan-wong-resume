@@ -6,13 +6,6 @@ import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 const Skills = (props) => {
     let skillsObjs = props.skills;
 
-    // const ids = props.skills?.map((obj) => obj.id);
-    // const skills = props.skills?.map((obj) => obj.skill);
-    // const rating = props.skills?.map((obj) => obj.rating);
-    // console.log("mapped id: ", ids);
-    // console.log("mapped skills: ", skills);
-    // console.log("mapped rating", rating);
-
     if (!skillsObjs) {
         return <div>Loading...</div>;
     }
