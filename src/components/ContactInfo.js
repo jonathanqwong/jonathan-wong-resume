@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import contactInfoData from '../mock/contact.json';
+import Title from './Title';
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
@@ -22,7 +23,7 @@ const ContactInfo = () => {
 
     return (
         <section className="contact-info">
-            <h2>Contact Information</h2>
+            <Title>Contact Information</Title>
             <ul>
                 <li>Email: {email}</li>
                 <li>Phone: {phone}</li>

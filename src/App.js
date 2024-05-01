@@ -12,28 +12,32 @@ import Skills from './components/Skills';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 function App() {
-    const name = "John Doe";
-    const title = "Frontend Developer";
-    console.log("SUPABASE_URL", SUPABASE_URL);
-    console.log("SUPABASE_KEY", SUPABASE_KEY);
+    const name = "Jonathan Wong";
+    const title = "Software Developer Engimeer in Test. Tech Lover. Lifelong Student.";
+
     const [skills, setSkills] = useState([]);
+    const [education, setEducation] = useState([]);
 
     useEffect(() => {
         getSkills();
+        getEducation();
     }, []);
-
+      
     async function getSkills() {
         const { data } = await supabase.from("skills").select();
         setSkills(data);
     }
 
+    async function getEducation() {
+        const { data } = await supabase.from("education").select();
+        setEducation(data);
+    }
+
     // Define components in an object
     const components = {
-        null: () => <Header
-            name={name} title={title}
-        />,
+        null: () => <Header name={name} title={title}/>,
         Contact: () => <ContactInfo/>,
-        Education: () => <Education/>,
+        Education: () => <Education education={education}/>,
         Experience: () => <Experience/>,
         Skills: () => <Skills skills={skills}/>,
     };
@@ -44,7 +48,7 @@ function App() {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Resume
+                            Jonathan Wong's Resume
                         </Typography>
                         <Button component={Link} to="/" color="inherit">Home</Button>
                         <Button component={Link} to="/contact" color="inherit">Contact</Button>

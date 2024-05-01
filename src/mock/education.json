@@ -1,7 +1,20 @@
-{
-  "education": {
-    "degree": "Bachelor of Science in Computer Science",
-    "school": "University of ABC",
-    "date": "20XX - 20XX"
+[
+  {
+      "id": 1,
+      "university": "University of California Riverside",
+      "degree": "B.S. in Computer Information Syste,s",
+      "graduation_date": "2015-06-01"
+  },
+  {
+      "id": 2,
+      "university": "University of San Francisco",
+      "degree": "M.S Management Information Systems",
+      "graduation_date": "2021-12-30"
+  },
+  {
+      "id": 3,
+      "university": "San Mateo Community College",
+      "degree": "Computer Science Applications & Development: CERT",
+      "graduation_date": "2024-12-30"
   }
-}
+]
