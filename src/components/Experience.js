@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import experienceData from '../mock/experience.json';
+import Title from './Title';
 
 const Experience = () => {
     const [experienceInfo, setExperienceInfo] = useState(null);
@@ -22,7 +23,7 @@ const Experience = () => {
 
     return (
         <section className="experience">
-            <h2>Experience</h2>
+            <Title>Experience</Title>
             <div>
                 <h3>{title}</h3>
                 <p>{company}, {date}</p>

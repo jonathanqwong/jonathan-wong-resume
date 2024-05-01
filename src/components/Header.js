@@ -1,11 +1,12 @@
 import React from 'react';
 import {Container} from "@mui/material";
+import Title from './Title';
 
 const Header = ({ name, title }) => {
     return (
         <Container maxWidth="sm">
             <header>
-                <h1>{name}</h1>
+                <Title>{name}</Title>
                 <p>{title}</p>
             </header>
         </Container>

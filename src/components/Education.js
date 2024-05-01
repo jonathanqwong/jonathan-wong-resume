@@ -1,32 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import educationData from '../mock/education.json';
+import EducationMock from '../mock/education.json';
+import Title from './Title';
+import './styles.scss';
 
-const Education = () => {
-    const [educationInfo, setEducationInfo] = useState(null);
-    const degree = educationInfo?.degree;
-    const school = educationInfo?.school;
-    const date = educationInfo?.date;
+import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 
-    useEffect(() => {
-        setEducationInfo(educationData?.education);
-        // fetch('/data.json')
-        //     .then(response => response.json())
-        //     .then(data => setContactInfo(educationData))
-        //     .catch(error => console.error('Error fetching contact info:', error));
-    }, []);
+const Education = (props) => {
+    let educationObjs = props.education;
 
-    if (!educationInfo) {
+    if (!educationObjs) {
         return <div>Loading...</div>;
     }
 
+    // Fallback method if getEducation not loaded from supabase
+    const fallbackForEducationSupabaseUnsuccessful = () => {
+        if (educationObjs.length === 0) {
+            educationObjs = EducationMock;
+        }
+    }
+
+    const preventDefault = (event) => {
+        event.preventDefault();
+    }
+    
+    fallbackForEducationSupabaseUnsuccessful();
+
     return (
-        <section className="education">
-            <h2>Education</h2>
-            <div>
-                <h3>{degree}</h3>
-                <p>{school}, {date}</p>
-            </div>
-        </section>
+        <React.Fragment>
+            
+            <Title>Education</Title>
+            <Table size="small">
+                <TableHead>
+                    <TableRow className="table-row-header">
+                        <TableCell>University</TableCell>
+                        <TableCell>Degree</TableCell>
+                        <TableCell>Graduation Date</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {educationObjs.map((educationObj) => (
+                        <TableRow key={educationObj.id}>
+                            <TableCell>{educationObj.university}</TableCell>
+                            <TableCell>{educationObj.degree}</TableCell>
+                            <TableCell>{educationObj.graduation_date}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </React.Fragment>
     );
 };
 
