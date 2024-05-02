@@ -1,20 +1,21 @@
 import React from 'react';
 import {Container, Avatar, Stack} from "@mui/material";
 import Title from './Title';
+import Selfie from '../images/selfie.jpeg';
 
-const Header = ({ name, title }) => {
+const Home = ({ name, title }) => {
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="xl">
             <header>
-                <Title>{name}</Title>
+                <Title>About Me</Title>
                 <p>{title}</p>
             </header>
             <Stack direction="row" spacing={2}>
-                <Avatar alt="Jonathan Wong" src="../static/images/selfie.jpeg" />
+                <Avatar alt="Jonathan Wong" src={Selfie} />
             </Stack>
         </Container>
 
     );
 };
 
-export default Header;
+export default Home;
