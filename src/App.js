@@ -96,30 +96,7 @@ function App() {
   
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
-    };
-      
-        // <Router>
-        //     <div>
-        //         <AppBar position="static">
-        //             <Toolbar>
-        //                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        //                     Jonathan Wong's Resume
-        //                 </Typography>
-        //                 <Button component={Link} to="/" color="inherit">About Me</Button>
-        //                 <Button component={Link} to="/contact" color="inherit">Contact</Button>
-        //                 <Button component={Link} to="/education" color="inherit">Education</Button>
-        //                 <Button component={Link} to="/experiences" color="inherit">Experiences</Button>
-        //                 <Button component={Link} to="/skills" color="inherit">Skills</Button>
-        //             </Toolbar>
-        //         </AppBar>
-        //         <Routes>
-        //             <Route path="/" element={<Home name={name} title={title} />} />
-        //             {Object.entries(components).map(([path, Component]) => (
-        //                 <Route key={path} path={`/${path.toLowerCase()}`} element={<Component />} />
-        //             ))}
-        //         </Routes>
-        //     </div>
-        // </Router>
+    };  
 
     return (
         <Router>
