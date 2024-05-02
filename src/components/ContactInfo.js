@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import contactInfoData from '../mock/contact.json';
 import Title from './Title';
-import {Box} from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
@@ -21,14 +21,16 @@ const ContactInfo = () => {
     console.log("contact info", contactInfo);
 
     return (
-        <section className="contact-info">
+        <React.Fragment>
+            <Container className="contact-info" maxWidth="xl">
             <Title>Contact Information</Title>
                 <Box
                     height={200}
                     width={200}
                     my={4}
-                    display="inline"                        
-                    alignItems="center"                        gap={4}
+                    display="inline-block"                        
+                    alignItems="center"                       
+                    gap={4}
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
@@ -38,8 +40,9 @@ const ContactInfo = () => {
                     height={200}
                     width={200}
                     my={4}
-                    display="inline"                        
-                    alignItems="center"                        gap={4}
+                    display="inline-block"                 
+                    alignItems="center"                        
+                    gap={4}
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
@@ -49,8 +52,9 @@ const ContactInfo = () => {
                     height={200}
                     width={200}
                     my={4}
-                    display="inline"                        
-                    alignItems="center"                        gap={4}
+                    display="inline-block"           
+                    alignItems="center"                        
+                    gap={4}
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
@@ -60,14 +64,16 @@ const ContactInfo = () => {
                     height={200}
                     width={200}
                     my={4}
-                    display="inline"                        
-                    alignItems="center"                        gap={4}
+                    display="inline-block"                       
+                    alignItems="center"                        
+                    gap={4}
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
                     {contactInfo.github}
                 </Box>
-        </section>
+            </Container>
+        </React.Fragment>
     );
 };
 
