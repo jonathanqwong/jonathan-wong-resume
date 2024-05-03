@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import contactInfoData from '../mock/contact.json';
 import Title from './Title';
-import { Box, Container } from "@mui/material";
+import { Box, Container, Link } from "@mui/material";
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
     const email = contactInfo?.email;
+    const emailLink = `mailto:${email}`;
     const phone = contactInfo?.phone;
     const linkedin = contactInfo?.linkedin;
     const github = contactInfo?.github;
@@ -28,25 +29,25 @@ const ContactInfo = () => {
                     height={200}
                     width={200}
                     my={4}
-                    display="inline-block"                        
-                    alignItems="center"                       
+                    display="inline-block"
+                    alignItems="center" 
                     gap={4}
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
-                    {contactInfo.email}
+                    <Link href={emailLink} target="_top">Email</Link>
                 </Box>
                 <Box
                     height={200}
                     width={200}
                     my={4}
-                    display="inline-block"                 
-                    alignItems="center"                        
+                    display="inline-block"
+                    alignItems="center"
                     gap={4}
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
-                    {contactInfo.phone}
+                    {phone}
                 </Box>
                 <Box
                     height={200}
@@ -58,7 +59,7 @@ const ContactInfo = () => {
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
-                    {contactInfo.linkedin}
+                    <Link rel="noopener" href={linkedin}>LinkedIn</Link>
                 </Box>
                 <Box
                     height={200}
@@ -70,7 +71,7 @@ const ContactInfo = () => {
                     p={2}
                     sx={{ border: '2px solid grey' }}
                 >
-                    {contactInfo.github}
+                    <Link rel="noopener" href={github}>Github</Link>
                 </Box>
             </Container>
         </React.Fragment>

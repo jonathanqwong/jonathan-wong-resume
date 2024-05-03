@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ExperienceMock from '../mock/experience.json';
 import Title from './Title';
 import './styles.scss';
@@ -16,10 +16,6 @@ const Experience = (props) => {
         if (experiencesObjs.length === 0) {
             experiencesObjs = ExperienceMock;
         }
-    }
-
-    const preventDefault = (event) => {
-        event.preventDefault();
     }
     
     fallbackForExperienceSupabaseUnsuccessful();

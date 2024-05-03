@@ -30,6 +30,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
 function App() {
     const name = "Jonathan Wong";
     const title = "Seasoned Software Developer Engineer in Test. Tech Lover. Lifelong Student.";

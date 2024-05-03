@@ -18,10 +18,6 @@ const Skills = (props) => {
         }
     }
 
-    const preventDefault = (event) => {
-        event.preventDefault();
-    }
-
     fallbackForSkillsSupabaseUnsuccessful();
 
     return (

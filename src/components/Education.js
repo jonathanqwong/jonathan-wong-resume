@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import EducationMock from '../mock/education.json';
 import CertificationsMock from '../mock/certifications.json';
 import Title from './Title';
@@ -8,7 +8,6 @@ import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 const Education = (props) => {
     let educationObjs = props.education;
     let certificationsObjs = props.certifications;
-
 
     if (!educationObjs || !certificationsObjs) {
         return <div>Loading...</div>;
@@ -26,10 +25,6 @@ const Education = (props) => {
         if (certificationsObjs.length === 0) {
             certificationsObjs = CertificationsMock;
         }
-    }
-
-    const preventDefault = (event) => {
-        event.preventDefault();
     }
     
     fallbackForEducationSupabaseUnsuccessful();
