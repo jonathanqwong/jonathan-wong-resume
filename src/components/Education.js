@@ -61,15 +61,15 @@ const Education = (props) => {
             <Table size="small">
                 <TableHead>
                     <TableRow className="table-row-header">
-                        <TableCell>Certification</TableCell>
                         <TableCell>Institution</TableCell>
+                        <TableCell>Certification</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {certificationsObjs.map((certificationObj) => (
                         <TableRow key={certificationObj.id}>
-                            <TableCell>{certificationObj.certification}</TableCell>
                             <TableCell>{certificationObj.institution}</TableCell>
+                            <TableCell>{certificationObj.certification}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
