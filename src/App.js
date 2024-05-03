@@ -53,12 +53,12 @@ function App() {
     }
 
     async function getEducation() {
-        const { data } = await supabase.from("education").select();
+        const { data } = await supabase.from("education").select().order('id', { ascending: false });
         setEducation(data);
     }
 
     async function getExperiences() {
-        const { data } = await supabase.from("experiences").select();
+        const { data } = await supabase.from("experiences").select().order('id', { ascending: false });
         setExperiences(data);
     }
 
