@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import contactInfoData from '../mock/contact.json';
 import Title from './Title';
-import { Box, Container, Link } from "@mui/material";
+import { Box, Container, Link, Button } from "@mui/material";
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
@@ -25,54 +29,18 @@ const ContactInfo = () => {
         <React.Fragment>
             <Container className="contact-info" maxWidth="xl">
             <Title>Contact Information</Title>
-                <Box
-                    height={200}
-                    width={200}
-                    my={4}
-                    display="inline-block"
-                    alignItems="center" 
-                    gap={4}
-                    p={2}
-                    sx={{ border: '2px solid grey' }}
-                >
-                    <Link href={emailLink} target="_top">Email</Link>
-                </Box>
-                <Box
-                    height={200}
-                    width={200}
-                    my={4}
-                    display="inline-block"
-                    alignItems="center"
-                    gap={4}
-                    p={2}
-                    sx={{ border: '2px solid grey' }}
-                >
-                    {phone}
-                </Box>
-                <Box
-                    height={200}
-                    width={200}
-                    my={4}
-                    display="inline-block"           
-                    alignItems="center"                        
-                    gap={4}
-                    p={2}
-                    sx={{ border: '2px solid grey' }}
-                >
-                    <Link rel="noopener" href={linkedin}>LinkedIn</Link>
-                </Box>
-                <Box
-                    height={200}
-                    width={200}
-                    my={4}
-                    display="inline-block"                       
-                    alignItems="center"                        
-                    gap={4}
-                    p={2}
-                    sx={{ border: '2px solid grey' }}
-                >
-                    <Link rel="noopener" href={github}>Github</Link>
-                </Box>
+                <Button href={emailLink}>
+                    <EmailIcon></EmailIcon>
+                </Button>
+
+                <Button href={linkedin}>
+                    <LinkedInIcon></LinkedInIcon>
+                </Button>
+
+                <Button href={github}>
+                    <GitHubIcon></GitHubIcon>
+                </Button>
+                
             </Container>
         </React.Fragment>
     );

@@ -48,7 +48,7 @@ function App() {
     }, []);
       
     async function getSkills() {
-        const { data } = await supabase.from("skills").select();
+        const { data } = await supabase.from("skills").select().order('skill', { ascending: true });
         setSkills(data);
     }
 
@@ -69,7 +69,7 @@ function App() {
 
     // Define components in an object
     const components = {
-        About: () => <Home name={name} title={title}/>,
+        About: () => <Home name={name} title={title} skills={skills}/>,
         Contact: () => <ContactInfo/>,
         Education: () => <Education education={education} certifications={certifications}/>,
         Experiences: () => <Experiences experiences={experiences}/>,
@@ -80,7 +80,7 @@ function App() {
         <Router>
             <NavBar></NavBar>
             <Routes>
-                <Route path="/" element={<Home name={name} title={title} />} />
+                <Route path="/" element={<Home name={name} title={title} skills={skills}/>} />
                 {Object.entries(components).map(([path, Component]) => (
                     <Route key={path} path={`/${path.toLowerCase()}`} element={<Component />} />
                 ))}
