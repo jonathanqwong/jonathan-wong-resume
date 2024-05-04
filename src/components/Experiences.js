@@ -35,11 +35,11 @@ const Experience = (props) => {
                 </TableHead>
                 <TableBody>
                     {experiencesObjs.map((experienceObj) => (
-                        <TableRow key={experienceObj.id}>
+                        <TableRow key={experienceObj?.id}>
                             <TableCell>{experienceObj.title}</TableCell>
-                            <TableCell>{experienceObj.company}</TableCell>
-                            <TableCell>{experienceObj.description}</TableCell>
-                            <TableCell>{experienceObj.start_date} - {experienceObj.end_date}</TableCell>
+                            <TableCell>{experienceObj?.company}</TableCell>
+                            <TableCell>{experienceObj?.description || ''}</TableCell>
+                            <TableCell>{experienceObj?.start_date ? experienceObj.start_date + ' - ' + experienceObj.end_date : ''}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

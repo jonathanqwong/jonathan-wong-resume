@@ -32,15 +32,12 @@ const ContactInfo = () => {
                 <Button href={emailLink}>
                     <EmailIcon></EmailIcon>
                 </Button>
-
                 <Button href={linkedin}>
                     <LinkedInIcon></LinkedInIcon>
                 </Button>
-
                 <Button href={github}>
                     <GitHubIcon></GitHubIcon>
                 </Button>
-                
             </Container>
         </React.Fragment>
     );

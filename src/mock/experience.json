@@ -1,12 +1,34 @@
-{
-  "experience": {
-    "title": "Frontend Developer",
-    "company": "XYZ Company",
-    "date": "20XX - Present",
-    "responsibilities": [
-      "Developed responsive web applications using React.js",
-      "Collaborated with designers to implement user-friendly interfaces",
-      "Optimized website performance for improved user experience"
-    ]
+[
+  {
+      "id": 4,
+      "company": "XYZ",
+      "title": "Staff SDET",
+      "description": null,
+      "start_date": null,
+      "end_date": null
+  },
+  {
+      "id": 3,
+      "company": "Doctor on Demand",
+      "title": "Software QA Engineer II",
+      "description": null,
+      "start_date": null,
+      "end_date": null
+  },
+  {
+      "id": 2,
+      "company": "EducationDynamics ",
+      "title": "Software QA Engineer II",
+      "description": null,
+      "start_date": null,
+      "end_date": null
+  },
+  {
+      "id": 1,
+      "company": "G2S",
+      "title": "Web Developer Intern",
+      "description": null,
+      "start_date": null,
+      "end_date": null
   }
-}
+]

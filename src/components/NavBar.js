@@ -28,7 +28,6 @@ const NavBar = (props) => {
       setAnchorElUser(null);
     };  
 
-    console.log("name from props in navbar", name);
     return (
         <AppBar position="static">
         <Container maxWidth="xl">
