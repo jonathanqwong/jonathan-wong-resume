@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';     // HashRouter - https://stackoverflow.com/questions/51974369/what-is-the-difference-between-hashrouter-and-browserrouter-in-react
 
 import { SUPABASE_URL, SUPABASE_KEY, FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET, FIREBASE_MESSAGING_SENDER_ID, FIREBASE_APP_ID, FIREBASE_MEASUREMENT_ID } from './configuration/config';
 import NavBar from './components/NavBar';
@@ -8,11 +8,12 @@ import ContactInfo from './components/ContactInfo';
 import Education from './components/Education';
 import Experiences from './components/Experiences';
 import Skills from './components/Skills';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Import the functions you need from the SDKs you need
-import { createClient } from "@supabase/supabase-js";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -42,8 +43,7 @@ function App() {
 
     useEffect(() => {
         getSkills();
-        getEducation();
-        getExperiences();
+        getEducation();getExperiences();
         getCertifications();
     }, []);
       
@@ -75,18 +75,22 @@ function App() {
         Experiences: () => <Experiences experiences={experiences}/>,
         Skills: () => <Skills skills={skills}/>,
     };
-
+    
     return (
+    <ErrorBoundary fallback={<p>Something went wrong</p>}>  
         <Router>
-            <NavBar></NavBar>
+            <NavBar />
             <Routes>
-                <Route path="/" element={<Home name={name} title={title} skills={skills}/>} />
+                <Route path="/" element={components.About()} />
+                <Route path="/about" element={components.About()} />
                 {Object.entries(components).map(([path, Component]) => (
                     <Route key={path} path={`/${path.toLowerCase()}`} element={<Component />} />
                 ))}
             </Routes>
-      </Router>
+        </Router>
+    </ErrorBoundary>
     );
 }
 
 export default App;
+
