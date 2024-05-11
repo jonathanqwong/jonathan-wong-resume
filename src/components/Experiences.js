@@ -1,11 +1,11 @@
 import React from 'react';
-import ExperienceMock from '../mock/experience.json';
-import Title from './Title';
-import './styles.scss';
 import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
+import Title from './Title';
+import ExperienceMock from '../mock/experience.json';
+import './styles.scss';
 
 const Experience = (props) => {
-    let experiencesObjs = props.experiences;
+    let experiencesObjs = props?.experiences;
 
     if (!experiencesObjs) {
         return <div>Loading...</div>;
@@ -17,12 +17,12 @@ const Experience = (props) => {
             experiencesObjs = ExperienceMock;
         }
     }
-    
-    fallbackForExperienceSupabaseUnsuccessful();
 
+    fallbackForExperienceSupabaseUnsuccessful();
+    
     return (
-        <React.Fragment>
-            <Title>Certifications</Title>
+        <div>
+            <Title>Experience</Title>
             <Table size="small">
                 <TableHead>
                     <TableRow className="table-row-header">
@@ -39,13 +39,13 @@ const Experience = (props) => {
                             <TableCell>{experienceObj.title}</TableCell>
                             <TableCell>{experienceObj?.company}</TableCell>
                             <TableCell>{experienceObj?.description || ''}</TableCell>
-                            <TableCell>{experienceObj?.start_date ? experienceObj.start_date + ' - ' + experienceObj.end_date : ''}</TableCell>
+                            <TableCell>{experienceObj?.start_date ? experienceObj?.start_date + ' - ' + experienceObj?.end_date : ''}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-        </React.Fragment>
-        
+        </div>
+
     );
 };
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
+import Title from './Title';
 import EducationMock from '../mock/education.json';
 import CertificationsMock from '../mock/certifications.json';
-import Title from './Title';
+
 import './styles.scss';
-import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 
 const Education = (props) => {
     let educationObjs = props.education;

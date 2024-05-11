@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AcUnit from '@mui/icons-material/AcUnit';
@@ -33,13 +33,13 @@ const NavBar = (props) => {
         <Container maxWidth="xl">
         <Toolbar disableGutters>
 
-            {/* Access menu from large screens */}
+            {/* Access menu from small screens */}
             <AcUnit sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
                 variant="h6"
                 noWrap
                 component="a"
-                href="/"
+                // href="/"
                 sx={{
                     mr: 2,
                     display: { xs: 'none', md: 'flex' },
@@ -52,55 +52,53 @@ const NavBar = (props) => {
                 >
                 {name}
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-            >
-                <MenuIcon />
-            </IconButton>
-            <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                display: { xs: 'block', md: 'none' },
-                }}
-            >
-                {pages.map((page) => (
-                     <MenuItem 
-                        key={page} 
-                        component={Link} 
-                        to={`/${page.toLowerCase()}`} 
-                        onClick={handleCloseUserMenu}
-                    >                               
-                        <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                ))}
-            </Menu>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } } } className="navbar-small">
+                <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="inherit"
+                >
+                    <MenuIcon />
+                </IconButton>
+                <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                    display: { xs: 'block', md: 'none' },
+                    }}
+                >
+                    {pages.map((page) => (
+                        <MenuItem 
+                            key={page.toLowerCase()} 
+                            component={Link} 
+                            to={page.toLowerCase()} 
+                            onClick={handleCloseUserMenu}
+                        >                               
+                            <Typography textAlign="center">{page}</Typography>
+                        </MenuItem>
+                    ))}
+                </Menu>
             </Box>
-
-            
             <AcUnit sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
+            <Typography 
                 variant="h5"
                 noWrap
                 component="a"
-                href="#app-bar-with-responsive-menu"
+                // href="/"
                 sx={{
                     mr: 2,
                     display: { xs: 'flex', md: 'none' },
@@ -116,12 +114,12 @@ const NavBar = (props) => {
             </Typography>
 
             {/* Access menu from large screens */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} className="navbar-xl">
                 {pages.map((page) => (
-                    <Button
+                    <Button 
                         component={Link} to={page.toLowerCase()} 
                         color="inherit"
-                        key={page}
+                        key={page.toLowerCase()}
                         onClick={handleCloseNavMenu}
                         sx={{ my: 2, color: 'white', display: 'block' }}
                         >
@@ -140,8 +138,8 @@ const NavBar = (props) => {
             </Box>
         </Toolbar>
         </Container>
+        <Outlet />
     </AppBar>
-
     );
 }
 

@@ -7,9 +7,9 @@ import ContactInfo from './ContactInfo';
 import SkillsInfo from './Skills';
 import './styles.scss';
 
-const Home = ({ name, title, skills }) => {
+const Home = ({ title, skills }) => {
     return (
-        <React.Fragment>
+        <div>
             <Container maxWidth="xl" style={{ backgroundImage: `url(${Background})`, backgroundSize: 'cover', backgroundPosition: 'center', height: 'max-height' }}>        
                 <div className="home-page-top">
                     <Title>About Me</Title>
@@ -30,7 +30,7 @@ const Home = ({ name, title, skills }) => {
             <Container>
                 <ContactInfo></ContactInfo>
             </Container>
-        </React.Fragment>
+        </div>
     );
 };
 

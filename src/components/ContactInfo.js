@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import contactInfoData from '../mock/contact.json';
-import Title from './Title';
-import { Box, Container, Link, Button } from "@mui/material";
+import { Container, Button } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
+import Title from './Title';
+import contactInfoData from '../mock/contact.json';
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
     const email = contactInfo?.email;
     const emailLink = `mailto:${email}`;
-    const phone = contactInfo?.phone;
     const linkedin = contactInfo?.linkedin;
     const github = contactInfo?.github;
 
@@ -23,10 +21,8 @@ const ContactInfo = () => {
         return <div>Loading...</div>;
     }
 
-    console.log("contact info", contactInfo);
-
     return (
-        <React.Fragment>
+        <div>
             <Container className="contact-info" maxWidth="xl">
             <Title>Contact Information</Title>
                 <Button href={emailLink}>
@@ -39,10 +35,8 @@ const ContactInfo = () => {
                     <GitHubIcon></GitHubIcon>
                 </Button>
             </Container>
-        </React.Fragment>
+        </div>
     );
 };
 
 export default ContactInfo;
-
-

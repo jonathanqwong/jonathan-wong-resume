@@ -1,8 +1,8 @@
 import React from 'react';
-import SkillsMock from '../mock/skills.json';
-import Title from './Title';
-import './styles.scss';
 import {Table, TableHead, TableCell, TableRow, TableBody, Rating} from "@mui/material";
+import Title from './Title';
+import SkillsMock from '../mock/skills.json';
+import './styles.scss';
 
 const Skills = (props) => {
     let skillsObjs = props.skills;
@@ -38,7 +38,7 @@ const Skills = (props) => {
     fallbackForSkillsSupabaseUnsuccessful();
 
     return (
-        <React.Fragment>
+        <div>
             <Title>Skills</Title>
             <Table size="small">
                 <TableHead>
@@ -58,7 +58,7 @@ const Skills = (props) => {
                     ))}
                 </TableBody>
             </Table>
-        </React.Fragment>
+        </div>
     );
 };
 
