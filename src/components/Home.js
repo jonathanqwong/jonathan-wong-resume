@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Title from './Title';
 import Selfie from '../images/selfie.jpeg';
 import Background from '../images/cool-background.png';
