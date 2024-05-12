@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
+import {Container, Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
 import Title from './Title';
 import ExperienceMock from '../mock/experience.json';
 import './styles.scss';
@@ -21,8 +21,9 @@ const Experience = (props) => {
     fallbackForExperienceSupabaseUnsuccessful();
     
     return (
-        <div>
+        <>
             <Title>Experience</Title>
+            <Container className="component-container">
             <Table size="small">
                 <TableHead>
                     <TableRow className="table-row-header">
@@ -44,7 +45,8 @@ const Experience = (props) => {
                     ))}
                 </TableBody>
             </Table>
-        </div>
+            </Container>
+        </>
 
     );
 };

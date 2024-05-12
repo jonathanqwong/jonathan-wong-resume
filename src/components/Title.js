@@ -4,9 +4,11 @@ import Typography from '@mui/material/Typography';
 
 function Title(props) {
   return (
-    <Typography component="h2" variant="h2" color="primary" lineHeight="4rem" paddingTop="1em" gutterBottom>
-      {props.children}
-    </Typography>
+    <div className="title"> 
+      <Typography component="h2" variant="h2" color="primary" gutterBottom>
+        {props.children}
+      </Typography>
+    </div>
   );
 }
 

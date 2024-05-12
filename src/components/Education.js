@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, TableHead, TableCell, TableRow, TableBody} from "@mui/material";
+import { Container, Table, TableHead, TableCell, TableRow, TableBody } from "@mui/material";
 import Title from './Title';
 import EducationMock from '../mock/education.json';
 import CertificationsMock from '../mock/certifications.json';
@@ -32,45 +32,49 @@ const Education = (props) => {
     fallbackForCertificationsSupabaseUnsuccessful();
 
     return (
-        <React.Fragment>
+        <>
             <Title>Education</Title>
-            <Table size="small">
-                <TableHead>
-                    <TableRow className="table-row-header">
-                        <TableCell>University</TableCell>
-                        <TableCell>Degree</TableCell>
-                        <TableCell>Graduation Date</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {educationObjs.map((educationObj) => (
-                        <TableRow key={educationObj.id}>
-                            <TableCell>{educationObj.university}</TableCell>
-                            <TableCell>{educationObj.degree}</TableCell>
-                            <TableCell>{educationObj.graduation_date}</TableCell>
+            <Container className="component-container">
+                <Table size="small">
+                    <TableHead>
+                        <TableRow className="table-row-header">
+                            <TableCell>University</TableCell>
+                            <TableCell>Degree</TableCell>
+                            <TableCell>Graduation Date</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+                    </TableHead>
+                    <TableBody>
+                        {educationObjs.map((educationObj) => (
+                            <TableRow key={educationObj.id}>
+                                <TableCell>{educationObj.university}</TableCell>
+                                <TableCell>{educationObj.degree}</TableCell>
+                                <TableCell>{educationObj.graduation_date}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Container>
 
             <Title>Certifications</Title>
-            <Table size="small">
-                <TableHead>
-                    <TableRow className="table-row-header">
-                        <TableCell>Institution</TableCell>
-                        <TableCell>Certification</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {certificationsObjs.map((certificationObj) => (
-                        <TableRow key={certificationObj.id}>
-                            <TableCell>{certificationObj.institution}</TableCell>
-                            <TableCell>{certificationObj.certification}</TableCell>
+            <Container className="component-container">
+                <Table size="small">
+                    <TableHead>
+                        <TableRow className="table-row-header">
+                            <TableCell>Institution</TableCell>
+                            <TableCell>Certification</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </React.Fragment>
+                    </TableHead>
+                    <TableBody>
+                        {certificationsObjs.map((certificationObj) => (
+                            <TableRow key={certificationObj.id}>
+                                <TableCell>{certificationObj.institution}</TableCell>
+                                <TableCell>{certificationObj.certification}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Container>
+        </>
         
     );
 };

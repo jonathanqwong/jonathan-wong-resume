@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, TableHead, TableCell, TableRow, TableBody, Rating} from "@mui/material";
+import { Container, Table, TableHead, TableCell, TableRow, TableBody, Rating } from "@mui/material";
 import Title from './Title';
 import SkillsMock from '../mock/skills.json';
 import './styles.scss';
@@ -38,27 +38,29 @@ const Skills = (props) => {
     fallbackForSkillsSupabaseUnsuccessful();
 
     return (
-        <div>
+        <>
             <Title>Skills</Title>
-            <Table size="small">
-                <TableHead>
-                    <TableRow className="table-row-header">
-                        <TableCell>Skill</TableCell>
-                        <TableCell>Proficiency</TableCell>  
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {skillsObjs.map((skillsObj) => (
-                        <TableRow key={skillsObj.id}>
-                            <TableCell>{skillsObj.skill}</TableCell>
-                            <TableCell>
-                                <Rating name="read-only" value={mapProficiencyToRatingValue(skillsObj)} readOnly />
-                            </TableCell>
+            <Container className="component-container">
+                <Table size="small">
+                    <TableHead>
+                        <TableRow className="table-row-header">
+                            <TableCell>Skill</TableCell>
+                            <TableCell>Proficiency</TableCell>  
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </div>
+                    </TableHead>
+                    <TableBody>
+                        {skillsObjs.map((skillsObj) => (
+                            <TableRow key={skillsObj.id}>
+                                <TableCell>{skillsObj.skill}</TableCell>
+                                <TableCell>
+                                    <Rating name="read-only" value={mapProficiencyToRatingValue(skillsObj)} readOnly />
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Container>
+        </>
     );
 };
 

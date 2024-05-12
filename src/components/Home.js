@@ -9,28 +9,17 @@ import './styles.scss';
 
 const Home = ({ title, skills }) => {
     return (
-        <div>
-            <Container maxWidth="xl" style={{ backgroundImage: `url(${Background})`, backgroundSize: 'cover', backgroundPosition: 'center', height: 'max-height' }}>        
-                <div className="home-page-top">
-                    <Title>About Me</Title>
-                    <Typography component="h2" variant="h5" color="grey" lineHeight="4rem" gutterBottom>{title}</Typography>
-                    <Box
-                        height="15rem"
-                        width="20rem"
-                        display="inline-block"
-                        alignItems="center"
-                    >
-                        <img src={Selfie} alt="Selfie" style={{ width: 'max-width', height: '90%', objectFit: 'cover' }} />
-                    </Box>
+        <>
+            <Container className="home-container" maxWidth="xl" style={{ backgroundImage: `url(${Background})`}}>        
+                <Title className="home-title">About Me</Title>
+                <Typography className="home-description" component="h2" variant="h5" gutterBottom>{title}</Typography>
+                <div className="home-image-container">
+                    <img src={Selfie} alt="Selfie" />
                 </div>
             </Container>
-            <Container>
-                <SkillsInfo skills={skills}></SkillsInfo>
-            </Container>
-            <Container>
-                <ContactInfo></ContactInfo>
-            </Container>
-        </div>
+            <SkillsInfo skills={skills}></SkillsInfo>
+            <ContactInfo></ContactInfo>
+        </>
     );
 };
 

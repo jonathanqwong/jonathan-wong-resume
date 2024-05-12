@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button } from "@mui/material";
+import { Box, Container, Button } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Title from './Title';
 import contactInfoData from '../mock/contact.json';
+import './styles.scss';
 
 const ContactInfo = () => {
     const [contactInfo, setContactInfo] = useState(null);
@@ -22,20 +23,20 @@ const ContactInfo = () => {
     }
 
     return (
-        <div>
-            <Container className="contact-info" maxWidth="xl">
+        <>
             <Title>Contact Information</Title>
-                <Button href={emailLink}>
-                    <EmailIcon></EmailIcon>
+            <Box className="contact-container">
+                <Button href={emailLink} className="contact-button">
+                    <EmailIcon className="contact-button-icon" />
                 </Button>
-                <Button href={linkedin}>
-                    <LinkedInIcon></LinkedInIcon>
+                <Button href={linkedin} className="contact-button">
+                    <LinkedInIcon className="contact-button-icon" />
                 </Button>
-                <Button href={github}>
-                    <GitHubIcon></GitHubIcon>
+                <Button href={github} className="contact-button">
+                    <GitHubIcon className="contact-button-icon" />
                 </Button>
-            </Container>
-        </div>
+            </Box>
+        </>
     );
 };
 
