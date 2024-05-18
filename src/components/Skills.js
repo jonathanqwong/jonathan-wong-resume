@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Table, TableHead, TableCell, TableRow, TableBody, Rating } from "@mui/material";
 import useFetch from "../hooks/useFetch";
-import Title from './Title';
+import Title from './common/Title';
+import Loader from './common/Loader';
 import SkillsMock from '../mock/skills.json';
 import './styles.scss';
 
@@ -9,9 +10,9 @@ const Skills = () => {
     const { data, loading, error } = useFetch('/skills');
     let skillsObjs = data;
 
-    if (!skillsObjs) {
-        return <div>Loading...</div>;
-    }
+    if (!skillsObjs) return <Loader/>;
+    if (loading) return <Loader/>;
+    if (error) return <div>Error: {error.message}</div>;
 
     // Fallback method if getSkills not loaded from api
     const fallbackForSkillsResponseUnsuccessful = () => {

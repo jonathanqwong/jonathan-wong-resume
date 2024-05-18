@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Typography } from "@mui/material";
-import Title from './Title';
+import Title from './common/Title';
 import ContactInfo from './ContactInfo';
 import SkillsInfo from './Skills';
 import Selfie from '../images/selfie.jpeg';

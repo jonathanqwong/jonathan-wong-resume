@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Table, TableHead, TableCell, TableRow, TableBody } from "@mui/material";
 import useFetch from "../hooks/useFetch";
-import Title from './Title';
+import Title from './common/Title';
+import Loader from './common/Loader';
 import EducationMock from '../mock/education.json';
 import CertificationsMock from '../mock/certifications.json';
 import './styles.scss';
@@ -10,10 +11,10 @@ const Education = () => {
     const { data: certificationsObjs, loading: certificationsLoading, error: certificationsError } = useFetch('/certifications');
     const { data: educationObjs, loading: educationLoading, error: educationError } = useFetch('/education');
 
-    if (!educationObjs || !certificationsObjs) return <div>Loading...</div>;
-    if (certificationsLoading) return <div>Loading...</div>;
+    if (!educationObjs || !certificationsObjs) return <Loader/>;
+    if (certificationsLoading) return <Loader/>;
     if (certificationsError) return <div>Error: {certificationsError.message}</div>;
-    if (educationLoading) return <div>Loading...</div>;
+    if (educationLoading) return <Loader/>;
     if (educationError) return <div>Error: {educationError.message}</div>;
 
     // Fallback method if getCertifications not loaded from api

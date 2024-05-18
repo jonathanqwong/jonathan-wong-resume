@@ -3,7 +3,7 @@ import { Box, Button } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Title from './Title';
+import Title from './common/Title';
 import contactInfoData from '../mock/contact.json';
 import './styles.scss';
 
