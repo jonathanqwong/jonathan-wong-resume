@@ -1,35 +1,37 @@
 import React from 'react';
 import { Container, Table, TableHead, TableCell, TableRow, TableBody } from "@mui/material";
+import useFetch from "../hooks/useFetch";
 import Title from './Title';
 import EducationMock from '../mock/education.json';
 import CertificationsMock from '../mock/certifications.json';
-
 import './styles.scss';
 
-const Education = (props) => {
-    let educationObjs = props.education;
-    let certificationsObjs = props.certifications;
+const Education = () => {
+    const { data: certificationsObjs, loading: certificationsLoading, error: certificationsError } = useFetch('/certifications');
+    const { data: educationObjs, loading: educationLoading, error: educationError } = useFetch('/education');
 
-    if (!educationObjs || !certificationsObjs) {
-        return <div>Loading...</div>;
-    }
+    if (!educationObjs || !certificationsObjs) return <div>Loading...</div>;
+    if (certificationsLoading) return <div>Loading...</div>;
+    if (certificationsError) return <div>Error: {certificationsError.message}</div>;
+    if (educationLoading) return <div>Loading...</div>;
+    if (educationError) return <div>Error: {educationError.message}</div>;
 
-    // Fallback method if getEducation not loaded from supabase
-    const fallbackForEducationSupabaseUnsuccessful = () => {
-        if (educationObjs.length === 0) {
-            educationObjs = EducationMock;
-        }
-    }
-
-     // Fallback method if getCertifications not loaded from supabase
-    const fallbackForCertificationsSupabaseUnsuccessful = () => {
+    // Fallback method if getCertifications not loaded from api
+    const fallbackForCertificationsResponseUnsuccessful = () => {
         if (certificationsObjs.length === 0) {
-            certificationsObjs = CertificationsMock;
+            this.certificationsObjs = CertificationsMock;
         }
     }
-    
-    fallbackForEducationSupabaseUnsuccessful();
-    fallbackForCertificationsSupabaseUnsuccessful();
+
+    // Fallback method if getEducation not loaded from api
+    const fallbackForEducationResponseUnsuccessful = () => {
+        if (educationObjs.length === 0) {
+            this.educationObjs = EducationMock;
+        }
+    }
+
+    fallbackForCertificationsResponseUnsuccessful();
+    fallbackForEducationResponseUnsuccessful();
 
     return (
         <>
@@ -75,7 +77,7 @@ const Education = (props) => {
                 </Table>
             </Container>
         </>
-        
+
     );
 };
 

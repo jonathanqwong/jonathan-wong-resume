@@ -1,8 +1,7 @@
-import React, {useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';     // HashRouter - https://stackoverflow.com/questions/51974369/what-is-the-difference-between-hashrouter-and-browserrouter-in-react
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';     // HashRouter - https://stackoverflow.com/questions/51974369/what-is-the-difference-between-hashrouter-and-browserrouter-in-react
 
 import { FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET, FIREBASE_MESSAGING_SENDER_ID, FIREBASE_APP_ID, FIREBASE_MEASUREMENT_ID } from './configuration/config';
-import SUPABASE from './configuration/supabaseConfig';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import ContactInfo from './components/ContactInfo';
@@ -34,49 +33,17 @@ function App() {
     const name = "Jonathan Wong";
     const title = "Seasoned Software Developer Engineer in Test. Tech Lover. Lifelong Student.";
 
-    const [skills, setSkills] = useState([]);
-    const [education, setEducation] = useState([]);
-    const [experiences, setExperiences] = useState([]);
-    const [certifications, setCertifications] = useState([]);
-
-    useEffect(() => {
-        getSkills();
-        getEducation();
-        getExperiences();
-        getCertifications();
-    }, []);
-      
-    async function getSkills() {
-        const { data } = await SUPABASE.from("skills").select().order('skill', { ascending: true });
-        setSkills(data);
-    }
-
-    async function getEducation() {
-        const { data } = await SUPABASE.from("education").select().order('id', { ascending: false });
-        setEducation(data);
-    }
-
-    async function getExperiences() {
-        const { data } = await SUPABASE.from("experiences").select().order('id', { ascending: false });
-        setExperiences(data);
-    }
-
-    async function getCertifications() {
-        const { data } = await SUPABASE.from("certifications").select();
-        setCertifications(data);
-    }
-
     // Define components in an object
     const components = {
-        About: () => <Home name={name} title={title} skills={skills}/>,
+        About: () => <Home name={name} title={title}/>,
         Contact: () => <ContactInfo/>,
-        Education: () => <Education education={education} certifications={certifications}/>,
-        Experiences: () => <Experiences experiences={experiences}/>,
-        Skills: () => <Skills skills={skills}/>,
+        Education: () => <Education/>,
+        Experiences: () => <Experiences/>,
+        Skills: () => <Skills/>,
     };
-    
+
     return (
-    <ErrorBoundary fallback={<p>Something went wrong</p>}>  
+    <ErrorBoundary fallback={<p>Something went wrong</p>}>
         <Router>
             <NavBar />
             <Routes>

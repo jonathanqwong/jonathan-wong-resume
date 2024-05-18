@@ -1,11 +1,13 @@
 import React from 'react';
 import { Container, Table, TableHead, TableCell, TableRow, TableBody, Rating } from "@mui/material";
+import useFetch from "../hooks/useFetch";
 import Title from './Title';
 import SkillsMock from '../mock/skills.json';
 import './styles.scss';
 
-const Skills = (props) => {
-    let skillsObjs = props.skills;
+const Skills = () => {
+    const { data, loading, error } = useFetch('/skills');
+    let skillsObjs = data;
 
     if (!skillsObjs) {
         return <div>Loading...</div>;
@@ -45,7 +47,7 @@ const Skills = (props) => {
                     <TableHead>
                         <TableRow className="table-row-header">
                             <TableCell>Skill</TableCell>
-                            <TableCell>Proficiency</TableCell>  
+                            <TableCell>Proficiency</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

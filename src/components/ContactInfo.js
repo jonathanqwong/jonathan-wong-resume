@@ -18,9 +18,7 @@ const ContactInfo = () => {
         setContactInfo(contactInfoData?.contactInfo);
     }, []);
 
-    if (!contactInfo) {
-        return <div>Loading...</div>;
-    }
+    if (!contactInfo) return <div>Loading...</div>
 
     return (
         <>
