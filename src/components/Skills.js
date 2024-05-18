@@ -13,8 +13,8 @@ const Skills = () => {
         return <div>Loading...</div>;
     }
 
-    // Fallback method if getSkills not loaded from supabase
-    const fallbackForSkillsSupabaseUnsuccessful = () => {
+    // Fallback method if getSkills not loaded from api
+    const fallbackForSkillsResponseUnsuccessful = () => {
         if (skillsObjs.length === 0) {
             skillsObjs = SkillsMock;
         }
@@ -37,7 +37,7 @@ const Skills = () => {
         }
     };
 
-    fallbackForSkillsSupabaseUnsuccessful();
+    fallbackForSkillsResponseUnsuccessful();
 
     return (
         <>
