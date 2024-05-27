@@ -4,6 +4,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Title from './common/Title';
+import ContactForm from "./ContactForm";
 import contactInfoData from '../mock/contact.json';
 import './styles.scss';
 
@@ -23,6 +24,7 @@ const ContactInfo = () => {
     return (
         <>
             <Title>Contact Information</Title>
+            {/*<ContactForm/>*/}
             <Box className="contact-container">
                 <Button href={emailLink} className="contact-button">
                     <EmailIcon className="contact-button-icon" />
