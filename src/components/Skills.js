@@ -8,7 +8,8 @@ import './styles.scss';
 
 const Skills = () => {
     const { data, loading, error } = useFetch('/skills');
-    let skillsObjs = data;
+    // Initialize object and check if it is an array for data or if data is empty
+    let skillsObjs = Array.isArray(data) ? data : [];
 
     if (!skillsObjs) return <Loader/>;
     if (loading) return <Loader/>;

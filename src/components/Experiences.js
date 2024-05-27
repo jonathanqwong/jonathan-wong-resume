@@ -8,7 +8,8 @@ import './styles.scss';
 
 const Experience = () => {
     const { data, loading, error } = useFetch('/experiences');
-    let experiencesObjs = data;
+    // Initialize object and check if it is an array for data or if data is empty
+    let experiencesObjs = Array.isArray(data) ? data : [];
 
     if (!experiencesObjs) return <Loader/>;
     if (loading) return <Loader/>;

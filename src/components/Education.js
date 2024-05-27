@@ -8,8 +8,11 @@ import CertificationsMock from '../mock/certifications.json';
 import './styles.scss';
 
 const Education = () => {
-    const { data: certificationsObjs, loading: certificationsLoading, error: certificationsError } = useFetch('/certifications');
-    const { data: educationObjs, loading: educationLoading, error: educationError } = useFetch('/education');
+    const { data: certificationsData, loading: certificationsLoading, error: certificationsError } = useFetch('/certifications');
+    const { data: educationData, loading: educationLoading, error: educationError } = useFetch('/education');
+    // Initialize object and check if it is an array for data or if data is empty
+    let certificationsObjs = Array.isArray(certificationsData) ? certificationsData : [];
+    let educationObjs = Array.isArray(educationData) ? educationData : [];
 
     if (!educationObjs || !certificationsObjs) return <Loader/>;
     if (certificationsLoading) return <Loader/>;
@@ -20,14 +23,14 @@ const Education = () => {
     // Fallback method if getCertifications not loaded from api
     const fallbackForCertificationsResponseUnsuccessful = () => {
         if (certificationsObjs.length === 0) {
-            this.certificationsObjs = CertificationsMock;
+            certificationsObjs = CertificationsMock;
         }
     }
 
     // Fallback method if getEducation not loaded from api
     const fallbackForEducationResponseUnsuccessful = () => {
         if (educationObjs.length === 0) {
-            this.educationObjs = EducationMock;
+            educationObjs = EducationMock;
         }
     }
 
