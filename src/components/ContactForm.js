@@ -43,13 +43,11 @@ const ContactInfo = () => {
 		e.preventDefault();
 		try {
 			let response = await postData(formData);
-			let success = response?.data;
-			let error = JSON.parse(response?.error?.response?.request?.response);
-
-			if (success) {
+			if (response.data) {
 				setSnackbarMessage("Message Sent!");
 				setOpen(false); // Close dialog on success
-			} else if (error) {
+			} else if (response.error) {
+				let error = JSON.parse(response?.error?.response?.request?.response);
 				let errorMsg = error?.errors[0].msg;
 				setSnackbarMessage("Something went wrong: \n" + errorMsg);
 			}
