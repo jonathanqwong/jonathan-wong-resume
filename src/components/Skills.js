@@ -9,18 +9,11 @@ import './styles.scss';
 const Skills = () => {
     const { data, loading, error } = useFetch('/skills');
     // Initialize object and check if it is an array for data or if data is empty
-    let skillsObjs = Array.isArray(data) ? data : [];
+	const skillsObjs = data && Array.isArray(data.data) && data.data.length > 0 ? data.data : SkillsMock;
 
     if (!skillsObjs) return <Loader/>;
     if (loading) return <Loader/>;
     if (error) return <div>Error: {error.message}</div>;
-
-    // Fallback method if getSkills not loaded from api
-    const fallbackForSkillsResponseUnsuccessful = () => {
-        if (skillsObjs.length === 0) {
-            skillsObjs = SkillsMock;
-        }
-    }
 
     const mapProficiencyToRatingValue = (skillsObj) => {
         switch (skillsObj.rating) {
@@ -38,8 +31,6 @@ const Skills = () => {
                 return 0;
         }
     };
-
-    fallbackForSkillsResponseUnsuccessful();
 
     return (
         <>

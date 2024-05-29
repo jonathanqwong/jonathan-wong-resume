@@ -9,20 +9,11 @@ import './styles.scss';
 const Experience = () => {
     const { data, loading, error } = useFetch('/experiences');
     // Initialize object and check if it is an array for data or if data is empty
-    let experiencesObjs = Array.isArray(data) ? data : [];
+    let experiencesObjs = data && Array.isArray(data.data) && data.data.length > 0 ? data.data : ExperienceMock;
 
     if (!experiencesObjs) return <Loader/>;
     if (loading) return <Loader/>;
     if (error) return <div>Error: {error.message}</div>;
-
-    // Fallback method if getExperience not loaded from supabase
-    const fallbackForExperienceResponseUnsuccessful = () => {
-        if (experiencesObjs.length === 0) {
-            experiencesObjs = ExperienceMock;
-        }
-    }
-
-    fallbackForExperienceResponseUnsuccessful();
 
     return (
         <>

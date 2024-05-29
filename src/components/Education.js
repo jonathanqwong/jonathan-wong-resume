@@ -11,31 +11,14 @@ const Education = () => {
     const { data: certificationsData, loading: certificationsLoading, error: certificationsError } = useFetch('/certifications');
     const { data: educationData, loading: educationLoading, error: educationError } = useFetch('/education');
     // Initialize object and check if it is an array for data or if data is empty
-    let certificationsObjs = Array.isArray(certificationsData) ? certificationsData : [];
-    let educationObjs = Array.isArray(educationData) ? educationData : [];
+    let certificationsObjs = certificationsData && Array.isArray(certificationsData.data) && certificationsData.data.length > 0 ? certificationsData.data : CertificationsMock;
+	let educationObjs = educationData && Array.isArray(educationData.data) && educationData.data.length > 0 ? educationData.data : EducationMock;
 
-    if (!educationObjs || !certificationsObjs) return <Loader/>;
+	if (!educationObjs || !certificationsObjs) return <Loader/>;
     if (certificationsLoading) return <Loader/>;
     if (certificationsError) return <div>Error: {certificationsError.message}</div>;
     if (educationLoading) return <Loader/>;
     if (educationError) return <div>Error: {educationError.message}</div>;
-
-    // Fallback method if getCertifications not loaded from api
-    const fallbackForCertificationsResponseUnsuccessful = () => {
-        if (certificationsObjs.length === 0) {
-            certificationsObjs = CertificationsMock;
-        }
-    }
-
-    // Fallback method if getEducation not loaded from api
-    const fallbackForEducationResponseUnsuccessful = () => {
-        if (educationObjs.length === 0) {
-            educationObjs = EducationMock;
-        }
-    }
-
-    fallbackForCertificationsResponseUnsuccessful();
-    fallbackForEducationResponseUnsuccessful();
 
     return (
         <>
