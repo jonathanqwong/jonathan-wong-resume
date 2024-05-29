@@ -1,43 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
-import EmailIcon from '@mui/icons-material/Email';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Title from './common/Title';
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Title from "./common/Title";
 import ContactForm from "./ContactForm";
-import contactInfoData from '../mock/contact.json';
-import './styles.scss';
+import contactInfoData from "../mock/contact.json";
+import "./styles.scss";
 
 const ContactInfo = () => {
-    const [contactInfo, setContactInfo] = useState(null);
-    const email = contactInfo?.email;
-    const emailLink = `mailto:${email}`;
-    const linkedin = contactInfo?.linkedin;
-    const github = contactInfo?.github;
+	const [contactInfo, setContactInfo] = useState(null);
+	const email = contactInfo?.email;
+	const emailLink = `mailto:${email}`;
+	const linkedin = contactInfo?.linkedin;
+	const github = contactInfo?.github;
 
-    useEffect(() => {
-        setContactInfo(contactInfoData?.contactInfo);
-    }, []);
+	useEffect(() => {
+		setContactInfo(contactInfoData?.contactInfo);
+	}, []);
 
-    if (!contactInfo) return <div>Loading...</div>
+	if (!contactInfo) return <div>Loading...</div>;
 
-    return (
-        <>
-            <Title>Contact Information</Title>
-            {/*<ContactForm/>*/}
-            <Box className="contact-container">
-                <Button href={emailLink} className="contact-button">
-                    <EmailIcon className="contact-button-icon" />
-                </Button>
-                <Button href={linkedin} className="contact-button">
-                    <LinkedInIcon className="contact-button-icon" />
-                </Button>
-                <Button href={github} className="contact-button">
-                    <GitHubIcon className="contact-button-icon" />
-                </Button>
-            </Box>
-        </>
-    );
+	return (
+		<>
+			<Title>Contact Information</Title>
+			<Box className="contact-container">
+				<ContactForm />
+				<Button href={emailLink} className="contact-button">
+					<EmailIcon className="contact-button-icon" />
+				</Button>
+				<Button href={linkedin} className="contact-button">
+					<LinkedInIcon className="contact-button-icon" />
+				</Button>
+				<Button href={github} className="contact-button">
+					<GitHubIcon className="contact-button-icon" />
+				</Button>
+			</Box>
+		</>
+	);
 };
 
 export default ContactInfo;
