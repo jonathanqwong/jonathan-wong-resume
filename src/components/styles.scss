@@ -18,11 +18,38 @@
     height: max-height;
 }
 
+// Contact Component
 .contact-container {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    padding-top: 2rem;
+    padding: 5rem;
+    height: 50px;
+    position: relative;
+	text-align: center;
+}
+
+.contact-button {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.contact-button:hover {
+    color: #8096d5;
+    background-color: #3080d7;
+    border-color: #004f9b;
+}
+
+.contact-button-icon:hover {
+    transform: scale(1.5);
+}
+
+// Contact Form Component
+.contact-form-button {
+    position: absolute;
+    padding-top: 1rem;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .contact-form {
@@ -55,22 +82,6 @@
     width: max-width;
     height: 90%;
     object-fit: cover;
-}
-
-.contact-button {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.contact-button:hover {
-    color: #8096d5;
-    background-color: #3080d7;
-    border-color: #004f9b;
-}
-
-.contact-button-icon:hover {
-    transform: scale(1.5);
 }
 
 .spinner-container {
