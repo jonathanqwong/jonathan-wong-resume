@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AcUnit from '@mui/icons-material/AcUnit';
-import Selfie from '../images/selfie.jpeg';
+import Initials from '../images/favicon-16x16.png';
 
 const NavBar = (props) => {
     let name = props.name;
@@ -12,21 +12,21 @@ const NavBar = (props) => {
     // Responsive Navbar https://mui.com/material-ui/react-app-bar/
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-  
+
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event) => {
       setAnchorElUser(event.currentTarget);
     };
-  
+
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
-  
+
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
-    };  
+    };
 
     return (
         <AppBar position="static">
@@ -82,19 +82,19 @@ const NavBar = (props) => {
                     }}
                 >
                     {pages.map((page) => (
-                        <MenuItem 
-                            key={page.toLowerCase()} 
-                            component={Link} 
-                            to={page.toLowerCase()} 
+                        <MenuItem
+                            key={page.toLowerCase()}
+                            component={Link}
+                            to={page.toLowerCase()}
                             onClick={handleCloseUserMenu}
-                        >                               
+                        >
                             <Typography textAlign="center">{page}</Typography>
                         </MenuItem>
                     ))}
                 </Menu>
             </Box>
             <AcUnit sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography 
+            <Typography
                 variant="h5"
                 noWrap
                 component="a"
@@ -116,8 +116,8 @@ const NavBar = (props) => {
             {/* Access menu from large screens */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} className="navbar-xl">
                 {pages.map((page) => (
-                    <Button 
-                        component={Link} to={page.toLowerCase()} 
+                    <Button
+                        component={Link} to={page.toLowerCase()}
                         color="inherit"
                         key={page.toLowerCase()}
                         onClick={handleCloseNavMenu}
@@ -132,7 +132,7 @@ const NavBar = (props) => {
             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Hi, nice to meet you!">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={name} src={Selfie} />
+                <Avatar alt={name} src={Initials} />
                 </IconButton>
             </Tooltip>
             </Box>
