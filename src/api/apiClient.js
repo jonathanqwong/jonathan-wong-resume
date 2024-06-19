@@ -2,10 +2,8 @@ import axios from 'axios';
 import { EXPRESS_RESUME_API_ENDPOINT } from '../configuration/config';
 
 const apiClient = axios.create({
-    baseURL: 'https://us-central1-jonathan-wong-resume-api.cloudfunctions.net/api',
-    headers: {
-        'Content-Type': 'application/json',
-    },
+    baseURL: EXPRESS_RESUME_API_ENDPOINT,
+    headers: { 'Content-Type': 'application/json' },
 });
 
 export const getData = async (endpoint) => {
