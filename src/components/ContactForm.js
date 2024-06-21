@@ -114,7 +114,7 @@ const ContactInfo = () => {
 					<form className="contact-form" onSubmit={handleSubmit}>
 						<Box
 							component="div"
-							sx={{ "& .MuiTextField-root": { m: 1, width: "70ch" } }}
+							sx={{ "& .MuiTextField-root": { m: 1, width: "auto" } }}
 							autoComplete="off"
 						>
 							<div>
