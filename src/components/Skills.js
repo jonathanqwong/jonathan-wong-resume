@@ -1,62 +1,36 @@
 import React from 'react';
-import { Container, Table, TableHead, TableCell, TableRow, TableBody, Rating } from "@mui/material";
-import useFetch from "../hooks/useFetch";
-import Title from './common/Title';
-import Loader from './common/Loader';
-import SkillsMock from '../mock/skills.json';
-import './styles.scss';
+import Section from './Section';
+import skillsData from '../mock/skills.json';
+
+const categoryOrder = ['Testing', 'Languages', 'Frameworks', 'Tools'];
 
 const Skills = () => {
-    const { data, loading, error } = useFetch('/skills');
-    // Initialize object and check if it is an array for data or if data is empty
-	const skillsObjs = data && Array.isArray(data.data) && data.data.length > 0 ? data.data : SkillsMock;
+  const grouped = categoryOrder.reduce((acc, cat) => {
+    acc[cat] = skillsData.filter(s => s.category === cat);
+    return acc;
+  }, {});
 
-    if (!skillsObjs) return <Loader/>;
-    if (loading) return <Loader/>;
-    if (error) return <div>Error: {error.message}</div>;
-
-    const mapProficiencyToRatingValue = (skillsObj) => {
-        switch (skillsObj.rating) {
-            case 'Knowledge':
-                return 1;
-            case 'Working Knowledge':
-                return 2;
-            case 'Proficient':
-                return 3;
-            case 'Very Proficient':
-                return 4;
-            case 'Expert':
-                return 5;
-            default:
-                return 0;
-        }
-    };
-
-    return (
-        <>
-            <Title>Skills</Title>
-            <Container className="component-container">
-                <Table size="small">
-                    <TableHead>
-                        <TableRow className="table-row-header">
-                            <TableCell>Skill</TableCell>
-                            <TableCell>Proficiency</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {skillsObjs.map((skillsObj) => (
-                            <TableRow key={skillsObj.id}>
-                                <TableCell>{skillsObj.skill}</TableCell>
-                                <TableCell>
-                                    <Rating name="read-only" value={mapProficiencyToRatingValue(skillsObj)} readOnly />
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </Container>
-        </>
-    );
+  return (
+    <Section id="skills" title="Skills">
+      <div className="grid md:grid-cols-2 gap-8">
+        {categoryOrder.map(category => (
+          <div key={category} className="bg-white dark:bg-slate-800 rounded-xl shadow-md dark:shadow-slate-900/50 p-6">
+            <h3 className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">{category}</h3>
+            <div className="flex flex-wrap gap-2">
+              {grouped[category].map(s => (
+                <span
+                  key={s.id}
+                  className="px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-lg font-medium hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                >
+                  {s.skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
 };
 
 export default Skills;

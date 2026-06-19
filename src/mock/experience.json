@@ -1,34 +1,53 @@
 [
   {
-      "id": 4,
-      "company": "XYZ",
-      "title": "Staff SDET",
-      "description": null,
-      "start_date": null,
-      "end_date": null
+    "id": 4,
+    "company": "XYZ",
+    "title": "Staff SDET",
+    "start_date": "2023-01",
+    "end_date": null,
+    "description": [
+      "Lead quality engineering strategy across multiple product teams",
+      "Architected end-to-end test automation frameworks using Playwright and Cypress",
+      "Reduced release cycle time by 30% through CI/CD pipeline improvements",
+      "Mentored junior SDETs and established testing best practices"
+    ]
   },
   {
-      "id": 3,
-      "company": "Doctor on Demand",
-      "title": "Software QA Engineer II",
-      "description": null,
-      "start_date": null,
-      "end_date": null
+    "id": 3,
+    "company": "Doctor on Demand",
+    "title": "Software QA Engineer II",
+    "start_date": "2020-06",
+    "end_date": "2022-12",
+    "description": [
+      "Owned automated testing for telehealth platform serving 1M+ patients",
+      "Built API and UI regression suites using Python and Selenium",
+      "Collaborated with cross-functional teams in an Agile/Scrum environment",
+      "Investigated and triaged production incidents to root cause"
+    ]
   },
   {
-      "id": 2,
-      "company": "EducationDynamics ",
-      "title": "Software QA Engineer II",
-      "description": null,
-      "start_date": null,
-      "end_date": null
+    "id": 2,
+    "company": "EducationDynamics",
+    "title": "Software QA Engineer II",
+    "start_date": "2018-03",
+    "end_date": "2020-05",
+    "description": [
+      "Developed and maintained automated test suites for lead-generation platforms",
+      "Performed manual and exploratory testing across web and mobile applications",
+      "Implemented performance testing with JMeter to identify bottlenecks",
+      "Documented test plans, cases, and defect reports in JIRA"
+    ]
   },
   {
-      "id": 1,
-      "company": "G2S",
-      "title": "Web Developer Intern",
-      "description": null,
-      "start_date": null,
-      "end_date": null
+    "id": 1,
+    "company": "G2S",
+    "title": "Web Developer Intern",
+    "start_date": "2015-06",
+    "end_date": "2015-12",
+    "description": [
+      "Built responsive web pages using HTML, CSS, and JavaScript",
+      "Assisted in migrating legacy content to a new CMS platform",
+      "Participated in daily standups and sprint planning"
+    ]
   }
 ]
