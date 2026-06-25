@@ -34,16 +34,22 @@ const Experiences = () => {
                     {formatDate(job.start_date)} – {formatDate(job.end_date)}
                   </span>
 									</div>
-									{Array.isArray(job.description) && job.description.length > 0 && (
-										<ul className="space-y-1.5 mt-3">
-											{job.description.map((bullet, j) => (
-												<li key={j} className="text-sm text-slate-600 dark:text-slate-300 flex gap-2">
-													<span className="text-blue-400 dark:text-blue-500 mt-0.5 flex-shrink-0">›</span>
-													{bullet}
-												</li>
-											))}
-										</ul>
-									)}
+									{(() => {
+										// jsonb returning array containing object
+										// unwrap the array first (desc[0]) before calling Object.values()
+										const src = Array.isArray(job.description) ? job.description[0] : job.description;
+										if (!src || typeof src !== 'object') return null;
+										return (
+										  <ul className="space-y-1.5 mt-3">
+										    {Object.values(src).map((bullet, j) => (
+										      <li key={j} className="text-sm text-slate-600 dark:text-slate-300 flex gap-2">
+										        <span className="text-blue-400 dark:text-blue-500 mt-0.5 flex-shrink-0">›</span>
+										        {bullet}
+										      </li>
+										    ))}
+										  </ul>
+										);
+									})()}
 								</div>
 							</div>
 
