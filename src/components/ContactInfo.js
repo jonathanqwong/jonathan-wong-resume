@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Section from './Section';
 import contactInfoData from '../mock/contact.json';
+import usePost from '../hooks/usePost';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -9,10 +10,12 @@ const ContactInfo = () => {
   const { email, linkedin, github } = contactInfoData.contactInfo;
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const { postData, loading: submitting, error: submitError } = usePost('/contact');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    const { error } = await postData(form);
+    if (!error) setSubmitted(true);
   };
 
   return (
@@ -99,11 +102,15 @@ const ContactInfo = () => {
                   placeholder="What's on your mind?"
                 />
               </div>
+              {submitError && (
+                <p className="text-red-500 text-sm">Something went wrong. Please try again.</p>
+              )}
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                disabled={submitting}
+                className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {submitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           )}
