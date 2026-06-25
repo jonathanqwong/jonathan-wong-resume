@@ -1,10 +1,12 @@
 import React from 'react';
 import Section from './Section';
-import skillsData from '../mock/skills.json';
+import useFetch from '../hooks/useFetch';
 
 const categoryOrder = ['Testing', 'Languages', 'Frameworks', 'Tools'];
 
 const Skills = () => {
+  const { data, loading, error } = useFetch('/skills');
+  const skillsData = data?.data ?? [];
   const grouped = categoryOrder.reduce((acc, cat) => {
     acc[cat] = skillsData.filter(s => s.category === cat);
     return acc;
@@ -12,6 +14,8 @@ const Skills = () => {
 
   return (
     <Section id="skills" title="Skills">
+      {loading && <p className="text-slate-400 dark:text-slate-500">Loading...</p>}
+      {error && <p className="text-red-500 text-sm">Failed to load skills.</p>}
       <div className="grid md:grid-cols-2 gap-8">
         {categoryOrder.map(category => (
           <div key={category} className="bg-white dark:bg-slate-800 rounded-xl shadow-md dark:shadow-slate-900/50 p-6">

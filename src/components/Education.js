@@ -1,15 +1,22 @@
 import React from 'react';
 import Section from './Section';
-import educationData from '../mock/education.json';
-import certificationsData from '../mock/certifications.json';
+import useFetch from '../hooks/useFetch';
 
 const formatGradDate = (dateStr) => {
   if (!dateStr) return '';
   return new Date(dateStr).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 };
 
-const Education = () => (
+const Education = () => {
+  const { data: eduData, loading: eduLoading, error: eduError } = useFetch('/education');
+  const { data: certData, loading: certLoading, error: certError } = useFetch('/certifications');
+  const educationData = eduData?.data ?? [];
+  const certificationsData = certData?.data ?? [];
+
+  return (
   <Section id="education" title="Education" className="bg-slate-50 dark:bg-slate-950">
+    {(eduLoading || certLoading) && <p className="text-slate-400 dark:text-slate-500">Loading...</p>}
+    {(eduError || certError) && <p className="text-red-500 text-sm">Failed to load education.</p>}
     <div className="space-y-10">
       <div className="grid md:grid-cols-3 gap-6">
         {educationData.map(edu => (
@@ -42,6 +49,7 @@ const Education = () => (
       </div>
     </div>
   </Section>
-);
+  );
+};
 
 export default Education;
