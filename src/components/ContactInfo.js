@@ -34,7 +34,7 @@ const ContactInfo = () => {
               <span className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 flex items-center justify-center transition-colors">
                 <EmailIcon fontSize="small" />
               </span>
-              <span className="font-medium">{email}</span>
+              <span className="font-medium">Email</span>
             </a>
             <a
               href={linkedin}
