@@ -29,6 +29,8 @@ const ContactInfo = () => {
           <div className="space-y-4">
             <a
               href={`mailto:${email}`}
+			  target="_blank"
+			  rel="noreferrer"
               className="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
             >
               <span className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 flex items-center justify-center transition-colors">
